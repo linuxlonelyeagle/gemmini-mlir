@@ -1,6 +1,3 @@
-#include "GemminiDialect.h"
-#include "GemminiOps.h"
-
 #include "mlir/Dialect/Bufferization/Transforms/Passes.h"
 #include "mlir/Dialect/Linalg/Passes.h"
 #include "mlir/IR/Dialect.h"
@@ -16,6 +13,10 @@
 #include "llvm/Support/SourceMgr.h"
 #include "llvm/Support/ToolOutputFile.h"
 
+#include "GemminiDialect.h"
+#include "GemminiOps.h"
+#include "Passes.h"
+
 int main(int argc, char *argv[]) {
 
   // Register all MLIR passes.
@@ -27,7 +28,7 @@ int main(int argc, char *argv[]) {
 
   // Register Gemmini dialect.
   registry.insert<mlir::gemmini::GemminiDialect>();
-
+  mlir::registerPasses();
   return mlir::failed(
       mlir::MlirOptMain(argc, argv, "buddy-mlir optimizer driver", registry));
 }

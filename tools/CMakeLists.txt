@@ -11,4 +11,5 @@ target_link_libraries(gemmini-opt
   ${conversion_libs}
   MLIROptLib
   GemminiDialect
+  LowerGemminiPass
 )

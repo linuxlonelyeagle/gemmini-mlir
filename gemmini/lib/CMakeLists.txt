@@ -1,7 +1,3 @@
-add_mlir_dialect_library(GemminiDialect
-  GemminiDialect.cpp
-
-  LINK_LIBS PUBLIC
-  MLIRIR
-  MLIRLLVMDialect
-)
+add_subdirectory(Conversion)
+add_subdirectory(Dialect)
+add_subdirectory(Transforms)
