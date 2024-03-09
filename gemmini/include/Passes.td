@@ -1,7 +1,7 @@
 include "mlir/Pass/PassBase.td"
 
 def LowerGemminiPass : Pass<"lower-gemmini", "mlir::ModuleOp"> {
-  let summary = "lower Gemmini Dialect high level op to intrinsic op. ";
+  let summary = "lower Gemmini Dialect high level op to intrinsic op.";
   let options = [
     Option<"dim", "dim", "int64_t", "16","Size of systolic array.">,
     Option<"addrLen", "addr_len", "int64_t", "32", "The length of address.">,
@@ -11,3 +11,11 @@ def LowerGemminiPass : Pass<"lower-gemmini", "mlir::ModuleOp"> {
     Option<"accType", "acc_t", "std::string", "\"i32\"", "The type of acc_t.">
   ];
 }
+
+def ConvertLinalgToGemminiPass : Pass<"convert-linalg-to-gemmini", "mlir::ModuleOp"> {
+  let summary = "convert linalg dialect to gemmini dialect.";
+  let options = [
+  Option<"accType", "acc_t", "std::string","\"i32\"", "The type of acc_t." >
+  ];
+}
+

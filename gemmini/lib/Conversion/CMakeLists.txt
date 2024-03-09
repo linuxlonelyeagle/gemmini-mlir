@@ -1,9 +1,2 @@
-add_mlir_library(LowerGemminiPass
-  LowerGemmini.cpp
-
-  DEPENDS
-
-  PassesIncGen
-  LINK_LIBS PUBLIC
-  GemminiTransforms
-  )
+add_subdirectory(ConvertLinalgToGemmini)
+add_subdirectory(LowerGemmini)

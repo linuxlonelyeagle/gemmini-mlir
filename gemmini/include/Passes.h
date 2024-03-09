@@ -10,10 +10,13 @@
 #include "mlir/Transforms/DialectConversion.h"
 
 namespace mlir {
-
 #define GEN_PASS_DECL
 #define GEN_PASS_REGISTRATION
 #include "Passes.h.inc"
+
+class LLVMTypeConverter;
+class RewritePatternSet;
+class LLVMConversionTarget;
 
 void populateGemminiLegalizeForLLVMExportPatterns(
     LLVMTypeConverter &converter, RewritePatternSet &patterns, int64_t dim,
@@ -22,6 +25,8 @@ void populateGemminiLegalizeForLLVMExportPatterns(
 
 void configureGemminiLegalizeForExportTarget(LLVMConversionTarget &target);
 
-} // namespace mlir
+void populateConvertLinalgToGemminiConversionPatterns(RewritePatternSet &patterns,
+                                                    std::string accType);
 
+} // namespace mlir
 #endif
